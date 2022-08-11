@@ -54,12 +54,7 @@ class Circle {
         this.y += this.vy;
         
         let d = distance(mouse,{x:this.x,y:this.y});
-        c.beginPath(); //Begins the process
-        c.moveTo(this.x,this.y); //This sets the start point of the line
-        c.lineTo(mouse.x,mouse.y) // This sets the end point of the line ! The context point
-        //remains at this location.
-        //Now it goes from previous positon to this new position
-        c.stroke();
+      
         if(d < 40){
             console.log("hit")
             
