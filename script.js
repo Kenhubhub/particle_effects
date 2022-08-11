@@ -22,10 +22,14 @@ window.addEventListener("mousemove", e =>{
     mouse.y = e.y;
 })
 class Circle {
-    constructor(x,y,vx,vy){
+    constructor(x,y,vx,vy,size){
         this.x = x;
         this.y = y;
-        this.size = 20;
+        this.constant_size = size;
+        let limit = 5
+        this.min = size;
+        this.max = 5 * size;
+        this.size = size;
         this.vx = vx;
         this.vy = vy;
         this.color = colors[Math.round(Math.random()*4)];
@@ -58,14 +62,14 @@ class Circle {
         c.stroke();
         if(d < 40){
             console.log("hit")
-            let limit = 70;
-            if(this.size < limit){
+            
+            if(this.size < this.max){
                 this.size++;
             }
             console.log(this.size)
         }else{
-            let limit = 20;
-            if(this.size > limit){
+          
+            if(this.size > this.min){
                 this.size--;
 
             }
@@ -122,12 +126,13 @@ const drawCircle = (x,y)=>{
 const circles = [];
 let initial_height = Math.random() * innerHeight/2;
 let initial_width = Math.random() * innerWidth/2;
-let vx= (Math.random() - 0.5)*3;
-let vy = (Math.random() - 0.5)*4;   
+let size = 10;
+let vx= (Math.random() - 0.5)*5;
+let vy = (Math.random() - 0.5)*5;   
 for(let i = 0 ; i<100; i++){
     let x = Math.random() * canvas.width;
     let y = Math.random() * canvas.height;
-    let circle =  new Circle(x,y,vx,vy);
+    let circle =  new Circle(x,y,vx,vy,size);
     circles.push(circle);
 }
 console.log(circles);
