@@ -8,10 +8,10 @@ const distance = (point1,point2) =>{
 }
 var c = canvas.getContext("2d"); //returning drawing context
 const colors = {
-    0:"rgba(255,205,200,0.5)",
-    1:"rgba(255,0,0,0.5)",
-    2:"rgba(0,255,0,0.5)",
-    3:"rgba(0,0,255,0.5)"
+    0:"rgba(255,205,200,1)",
+    1:"rgba(255,0,0,1)",
+    2:"rgba(0,255,0,1)",
+    3:"rgba(0,0,255,1)"
 }
 var mouse = {
     x: undefined,
@@ -26,9 +26,9 @@ class Circle {
         this.x = x;
         this.y = y;
         this.constant_size = size;
-        let limit = 5
+        let limit = 50
         this.min = size;
-        this.max = 5 * size;
+        this.max = limit * size;
         this.size = size;
         this.vx = vx;
         this.vy = vy;
@@ -119,12 +119,13 @@ const drawCircle = (x,y)=>{
 }
 //create array of circle objects
 const circles = [];
+let number_circles = 100;
 let initial_height = Math.random() * innerHeight/2;
 let initial_width = Math.random() * innerWidth/2;
-let size = 10;
+let size = 5;
 let vx= (Math.random() - 0.5)*5;
 let vy = (Math.random() - 0.5)*5;   
-for(let i = 0 ; i<100; i++){
+for(let i = 0 ; i<number_circles; i++){
     let x = Math.random() * canvas.width;
     let y = Math.random() * canvas.height;
     let circle =  new Circle(x,y,vx,vy,size);
